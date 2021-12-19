@@ -6,6 +6,8 @@ const router = express.Router(); // access to the express router
 
 // RESTAURANTS
 router.route('/').get(RestaurantsCtrl.apiGetRestaurants);
+router.route('/id/:id').get(RestaurantsCtrl.apiGetRestaurantById);
+router.route('/cuisines').get(RestaurantsCtrl.apiGetRestaurantCuisines);
 
 // REVIEWS
 router
@@ -15,3 +17,4 @@ router
   .delete(ReviewsCtrl.apiDeleteReview)
 
 export default router;
+
