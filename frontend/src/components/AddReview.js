@@ -1,7 +1,7 @@
 import React from 'react';
 
-const addReview = (props) => {
-  return <div></div>;
+const AddReview = (props) => {
+  return <div>CHUPALO PERKIN SHUSHETUMARE</div>;
 };
 
-export default addReview;
+export default AddReview;

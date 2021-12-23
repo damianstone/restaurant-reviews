@@ -2,7 +2,11 @@ import express from 'express';
 import RestaurantsCtrl from './restaurants.controller.js';
 import ReviewsCtrl from './reviews.controller.js';
 
+// API 
+// The api connects the backend with the frontend as well as the backend with the database
+
 const router = express.Router(); // access to the express router
+
 
 // RESTAURANTS
 router.route('/').get(RestaurantsCtrl.apiGetRestaurants);
