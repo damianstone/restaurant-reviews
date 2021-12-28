@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RestaurantDataService from '../services/restaurant';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const Restaurant = (props) => {
@@ -17,16 +18,17 @@ const Restaurant = (props) => {
       .then((response) => {
         setRestaurant(response.data);
         console.log(response.data);
-        console.log('CHUUUUUUUPALO');
       })
       .catch((e) => {
         console.log(e);
       });
   };
 
+  const { id } = useParams(); // use params in react router v6
+
   useEffect(() => {
-    getRestaurant(props.match.params.id);
-  }, [props.match.params.id]);
+    getRestaurant(id);
+  }, [id]); // ERROR
 
   const deleteReview = (reviewId, index) => {
     RestaurantDataService.deleteReview(reviewId, props.user.id)
@@ -57,7 +59,7 @@ const Restaurant = (props) => {
             {restaurant.address.zipcode}
           </p>
           <Link
-            to={'/restaurants/' + props.match.params.id + '/review'}
+            to={'/restaurants/' + id + '/review'}
             className='btn btn-primary'
           >
             Add Review
@@ -90,10 +92,7 @@ const Restaurant = (props) => {
                             </a>
                             <Link
                               to={{
-                                pathname:
-                                  '/restaurants/' +
-                                  props.match.params.id +
-                                  '/review',
+                                pathname: '/restaurants/' + id + '/review',
                                 state: {
                                   currentReview: review,
                                 },

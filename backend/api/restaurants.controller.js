@@ -1,6 +1,5 @@
 import RestaurantsDAO from '../dao/restaurantsDAO.js';
 
-// Method for routes
 export default class RestaurantsController {
   
   // GET ALL RESTAURANTS
@@ -28,7 +27,6 @@ export default class RestaurantsController {
         restaurantsPerPage,
       });
     
-    // return the result 
     let response = {
       restaurants: restaurantsList,
       page: page,

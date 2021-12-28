@@ -49,7 +49,7 @@ const App = (props) => {
           </li>
         </div>
       </nav>
-      {/* FINISH NAVBAR */}
+      {/* FINISH NAVBAR */} 
 
       <div className='container mt-3'>
         <Routes>
@@ -60,7 +60,7 @@ const App = (props) => {
           />
           <Route
             path='/restaurants/:id/review'
-            render={(props) => <AddReview {...props} user={user} />}
+            element={<AddReview {...props} user={user} />}
           />
           <Route
             path='/restaurants/id/:id'

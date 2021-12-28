@@ -8,7 +8,7 @@ class RestaurantDataService {
   }
 
   get(id) { // get restaurant one restaurant
-    return http.get(`/restaurants/id?id=${id}`);
+    return http.get(`/restaurants/id/${id}`);
   }
 
   find(query, by = 'name', page = 0) {
