@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {
   const initialUserState = {
@@ -12,10 +13,12 @@ const Login = (props) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
+  
+  const navigate = useNavigate(); // history.push in router v6
 
   const login = () => {
     props.login(user);
-    props.history.push('/restaurants');
+    navigate('/restaurants');
   };
 
   return (

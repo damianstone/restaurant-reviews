@@ -28,7 +28,7 @@ export default class ReviewsController {
     }
   }
 
-  // UPDATE
+  // UPDATE - EDIT
   static async apiUpdateReview(req, res, next) {
     try {
       const reviewId = req.body.review_id;

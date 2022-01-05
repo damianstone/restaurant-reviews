@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import RestaurantDataService from '../services/restaurant';
 import { Link } from 'react-router-dom';
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 const AddReview = (props) => {
   const { id } = useParams(); // use params in react router v6
+  const location = useLocation(); // access to the state router v6
 
   let initialReviewState = '';
 
-  let editing = false;
+  let editing = false; 
 
-  if (props.state && props.state.currentReview) {
+  if (location.state && location.state.currentReview) {
     editing = true;
-    initialReviewState = props.state.currentReview.text;
+    initialReviewState = location.state.currentReview.text
   }
 
   const [review, setReview] = useState(initialReviewState);
@@ -31,7 +32,7 @@ const AddReview = (props) => {
     };
 
     if (editing) {
-      data.review_id = props.location.state.currentReview._id;
+      data.review_id = location.state.currentReview._id;
       RestaurantDataService.updateReview(data)
         .then((response) => {
           setSubmitted(true);
@@ -49,7 +50,7 @@ const AddReview = (props) => {
         .catch((e) => {
           console.log(e);
         });
-    }
+    } 
   };
 
   return (
@@ -60,7 +61,7 @@ const AddReview = (props) => {
             <div>
               <h4>You submitted successfully!</h4>
               <Link
-                to={'/restaurants/' + id}
+                to={'/restaurants/id/' + id}
                 className='btn btn-success'
               >
                 Back to Restaurant
